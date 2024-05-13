@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  
+  html {
+  box-sizing: border-box;
+  font-size: 10px;
+  scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 1.6rem;
+  margin: 0;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Try to keep your margins going in one direction to avoid margin collapase or grounding. I switch all the top margins off to avoid this issue. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  /* You MUST make sure that links stand out from nomal text though...*/
+}
+
+/*
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+  */
+
+img {
+  /* This means that it can be less than 100% of the width of its parent IF the image is INTRINSICALLY smaller */
+  max-width: 100%;
+
+  height: auto;
+  /* 'auto' is the initial value for height BUT for images (and other elements which have an intrinic height) that is not the case. To make an image responsive you set one dimension (usually width) to [max-]width: 100%; and the other to 'auto' to ensure it keeps aspect ratio. 'auto' basically tells the browser to decide. */
+  vertical-align: middle;
+  /* minor vertical centering. Works for images IF there is a baseline (i.e. they are displayed inline or inline-block) */
+}
+
+/* Because we us <ul>s for lists that we don't always want bulletted. */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* To make actual bulletted lists */
+ul.typographic {
+  list-style: initial;
+  padding-inline-start: 20px;
+}
+
+/* For 'accessibility text'. If your button only has an image inside it that isn't good for accessibility. Put a span inside there and give it this class and put some descriptive text for what the button does into the span. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+
+/* OUR CSS */
+
+dt {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+body {
+  min-height: 500vh; /* <-- allows room to scroll */
+}
+
+section {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.page-header {
+  background-color: red;
+  color: white;
+  padding: 15px;
+  margin-bottom: 15px;
+/*   position: sticky;
+  top: 0px; */
+}
+
+.exercises {
+  border-top: 1px solid;
+  padding-top: 15px;
+}
+
+.exercise {
+  margin-bottom: 50px;
+  border-bottom: 1px solid;
+}
+
+.mock-header {
+  display: flex;
+}
+
+.mock-header .logo {
+  margin-right: auto;
+  font-size: 4rem;
+/*   position: relative;
+  top: -8px; */
+}
+
+.airfield {
+  border: 5px solid;
+  margin: 15px;
+  position: relative;
+  height: 300px;
+}
+
+.helicopter {
+  width: 80px;
+  height:50px;
+  background-image: url(https://dnd-character.s3.eu-west-2.amazonaws.com/PinClipart.com_clip-art-helicopter_876790.png);
+  background-size: cover;
+  /*  This is what you need to override */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(5px, 20px);
+}
+
+.airfield::before {
+  content: 'H';
+  background-color: yellow;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  position: absolute;
+  z-index: -1;
+}
+
+.text-link {
+  text-decoration: underline;
+}
+
+.text-link:hover,  .text-link:hover {
+  text-decoration: none;
+}
+
+
+/* Answers */
+
+/* Make the header sticky using position sticky.  */
+/* If anything goes over the top of the header you'll need to fix that */
+
+.page-header {
+
+}
+
+
+/* Make the social media tabs (bottom of the page) fix to the side of the viewport, half way up on the left */
+.social-media-menu {
+
+/*   transform: translateY(-50%); */ /* <-- You'll need this to dead-centre it */
+}
+
+.social-media-menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+  padding: 0.75em;
+  color: #fff;
+}
+
+.twitter {
+  background-color: #1b9cef;
+}
+
+.facebook {
+  background-color: #2374e1;
+}
+
+.reddit {
+  background-color: #fe4600;
+}
+
+/* Line up the logo and the nav links using position relative */
+.mock-header .mock-nav {
+
+}
+
+/* Move the title over the text using position absolute */
+
+
+/* At first we need to set a non-static property on a parent element to control where the absolutely positioned element is positioned relative to. Read the descriptions in the page to see which one to use.
+
+Doing this creates a new 'stacking context', so the content of this may go over the top of the nav bar. You'll need to fix that.  */
+.nearest-non-statically-positioned-ancestor {
+  
+}
+
+.over-heading {
+  
+}
+
+
+/* land the helecopter by resetting it to static */
+.helicopter {
+ 
+}
+  
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <span>Header - make me into a sticky header</span>
+  </header>
+  <main>
+    <section>
+      <h2>Positions and their uses</h2>
+      <dl>
+  
+        <dt><code>position: static;</code> - the default/canceller</dt>
+        <dd>
+          <ul class="typographic">
+            <li>All elements are 'statically positioned' by default. This means that they use the box model (the 'logs in the river') system</li>
+            <li>This declaration can therefore be used to cancel any of the others using css specificity to override: If you want an absolutely positioned element to stop flying around you can set that element to position static using css</li>
+          </ul>
+        </dd>
+  
+        <dt><code>top</code>, <code>bottom</code>, <code>left</code> &amp; <code>right</code>: &lt; some css length/unit &gt;</dt>
+        <dd>
+          <ul class="typographic">
+            <li>These have no effect if the element is statically positioned!</li>
+            <li>When something is positioned in a 'non-static' way then its positional coordinates are where the element's box would normally be</li>
+            <li>To adjust this we use the CSS properties top, bottom, left &amp; right</li>
+            <li>
+              <p>These measurements are 'relative' to either the 'last non-statically-positioned-ancestor' OR, if you don't have one of those, the <code>&lt;body&gt;</code> tag.</p>
+              <p>This does mean that if you have drop down menus on a sticky header then you have a position absolute menu inside a position sticky header, and all measurements for the menu will be relative to the header (if that is the last non-statically positioned ancestor)!</p>
+            </li>
+            <li>Mentally, I think of The Weakest Link when I do position. Every time I put a non-static position on something I think 'BANK!' and now I know my positions are going to be relative to this element.</li>
+          </ul>
+        </dd>
+  
+        <dt><code>position: relative;</code> - for visual micro-adjustments</dt>
+        <dd>
+          <ul class="typographic">
+            <li>This effects not where element boxes are but where they appear to be (so not on the draw/layout phase but on the paint phase.</li>
+            <li>This is often used for 'micro adjustments', when lining things up visually (e.g. the logo with the links in a nav</li>
+            <li>If all you're doing is moving an element's apparent position then <code>transform: translate()</code> is a more efficient option</li>
+            <li>It is often used as the 'last non-statically-positioned-ancestor' because it comes with few complications. If you're wanting to 'fly' a position absolute element around an area then give that area <code>position: relative;</code></li>
+          </ul>
+        </dd>
+  
+        <dt><code>position: fixed;</code> - sticking things to the viewport, like 'social media tabs'</dt>
+        <dd>
+          <ul class="typographic">
+            <li>Fixed takes an element onto a new composite layer (e.g. 'out of the flow of the page' - the helicopter with the grabby claw)</li>
+            <li>It positions the element <strong>relative to the viewport</strong></li>
+            <li>This was how we used to do sticky headers but because it comes out of the flow of the page it presents the problem of content going up underneath it and having to use padding to push it back out again (all very well until the content is dynamic!)</li>
+            <li>It's still useful for things like side-menus (think 'social media tabs on side of viewport')</li>
+          </ul>
+        </dd>
+  
+        <dt><code>position: sticky;</code> - sticky headers/footers</dt>
+        <dd>
+          <ul class="typographic">
+            <li>Sticky is an upgrade to fixed</li>
+            <li>Like relative, sticky leaves the element box where it is and just 'visually moves' the element during the paint phase.</li>
+            <li>Sticky can also be used on any element, not just the edges of the viewport (see <a href="https://codepen.io/jmsherry/pen/ydOaGq?editors=0100" target="_blank">here <span class="sr-only">opens in a new tab</span></a>)</li>
+            <li>To get sticky to work you need to state a <code>top</code> or <code>bottom</code> value for it, reative to the lst non-statically positioned ancestor or, failing that, the body tag.</li>
+          </ul>
+        </dd>
+  
+        <dt><code>position: absolute;</code> - putting an element over others (e.g. modal)</dt>
+        <dd>
+          <ul class="typographic">
+            <li>Absolute is for putting an element over the top of another. (think 'modals', 'content that slides over images', etc.</li>
+            <li>Absolute comes with consequences and is difficult to control: Use it only for the use cases mentioned above.</li>
+          </ul>
+        </dd>
+        <dt><code>z-index</code> - what goes over what</dt>
+        <dd>
+          <ul class="typographic">
+            <li>So, these 'composite layers' that we keep putting on things. Do we have any control of those? Answer: Yes, using z-index to create a 'stacking context'</li>
+            <li><code>z-index</code> takes some learning. You can tell that from all the <code>z-index: 99999999999999999;</code> that's out there! 🤣</li>
+            <li>Here's an <a href="https://ishadeed.com/article/understanding-z-index/" target="_blank" class="text-link">article<span class="sr-only">opens in a new tab</span></a> that explains more. and a <a href="https://codepen.io/jmsherry/pen/mdWoLbW" target="_blank" class="text-link">pen<span class="sr-only">opens in a new tab</span></a></li>
+          </ul>
+        </dd>
+      </dl>
+    </section>
+    <section class="exercises">
+      <h2>Exercises</h2>
+      <ol>
+        <li>Make the header sticky using position sticky</li>
+        <li>Make the social media tabs (bottom of the page) fix to the side of the viewport, half way up on the left</li>
+        <li>Line up the logo and the nav links using position relative</li>
+        <li>Move the title over the text using position absolute</li>
+        <li>land the helecopter by resetting it to static</li>
+      </ol>
+      <ul class="exercises">
+        <li class="exercise">
+          <h3><code>position: relative;</code> exercise</h3>
+          <div class="mock-header">
+            <span class="logo">Logo</span>
+            <nav class="mock-nav">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </nav>
+          </div>
+        </li>
+        <li class="exercise">
+          <h3><code>position: absolute;</code> exercise</h3>
+          <div class="nearest-non-statically-positioned-ancestor">
+            <img src="https://templeheightsanimalhospital.com/wp-content/uploads/2019/07/cat-4262034_1280.jpg" alt="some cat">
+            <h2 class="over-heading">Text to go over image</h2>
+          </div>
+        </li>
+        <li class="exercise">
+          <h3><code>position: static;</code> (resetting) exercise</h3>
+          <div class="nearest-non-statically-positioned-ancestor airfield">
+            <!--         <span class="landing-site">H</span> -->
+            <div class="helicopter"></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  
+  </main>
+  <aside>
+    <strong>Social media menu is here!!!</strong>
+    <ul class="social-media-menu">
+      <li><a href="#" class="twitter">TW</a></li>
+      <li><a href="#" class="facebook">FB</a></li>
+      <li><a href="#" class="reddit">Re</a></li>
+    </ul>
+  </aside>
+</body>
+</html>
